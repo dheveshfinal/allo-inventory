@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { ProductsPage } from './modules/products/ProductsPage'
 import { WarehousesPage } from './modules/warehouses/WarehousesPage'
 import { ReservationPage } from './modules/reservations/ReservationPage'
@@ -13,8 +13,8 @@ function App() {
           Allo Inventory Dashboard
         </h1>
         <nav className="mt-4 flex gap-4 text-sm font-medium">
-          <a href="/" className="hover:text-blue-600 transition-colors">Products</a>
-          <a href="/warehouses" className="hover:text-blue-600 transition-colors">Warehouses</a>
+          <Link to="/" className="hover:text-blue-600 transition-colors">Products</Link>
+          <Link to="/warehouses" className="hover:text-blue-600 transition-colors">Warehouses</Link>
         </nav>
       </header>
       
