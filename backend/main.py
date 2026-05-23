@@ -109,12 +109,6 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.error(f"Error creating tables: {e}")
     
-    # Auto-seed database
-    try:
-        await auto_seed_database()
-    except Exception as e:
-        logger.error(f"Error seeding database: {e}")
-    
     await init_redis()
     start_scheduler()
     logger.info("Startup complete.")
