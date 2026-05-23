@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from app.core.config import settings
 from app.core.redis import init_redis, close_redis
+from app.core.database import engine, Base
 from app.core.websocket_manager import manager
 from app.modules.products.router import router as products_router
 from app.modules.warehouses.router import router as warehouses_router
@@ -16,10 +17,25 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# Import models after FastAPI app is created to register them with Base
+def register_models():
+    from app.modules.products.models import Product
+    from app.modules.warehouses.models import Warehouse
+    from app.modules.reservations.models import Stock, Reservation
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Starting up...")
+    # Register models
+    register_models()
+    # Create all tables
+    try:
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        logger.info("Database tables created/verified.")
+    except Exception as e:
+        logger.error(f"Error creating tables: {e}")
     await init_redis()
     start_scheduler()
     logger.info("Startup complete.")
