@@ -1,0 +1,81 @@
+DATABASE SEEDING INSTRUCTIONS
+=============================
+
+To populate your database with sample data, use ONE of the following methods:
+
+---
+
+METHOD 1: CURL (Terminal/Command Line)
+=======================================
+curl -X POST https://allo-inventory-48cu.onrender.com/api/seed
+
+
+METHOD 2: POWERSHELL (Windows)
+==============================
+Invoke-WebRequest -Uri "https://allo-inventory-48cu.onrender.com/api/seed" -Method POST
+
+
+METHOD 3: BROWSER URL (Easiest)
+===============================
+https://allo-inventory-48cu.onrender.com/api/seed
+
+Just paste this in your browser and press Enter. Browser will execute the request.
+
+
+METHOD 4: JAVASCRIPT FETCH (Browser Console)
+=============================================
+fetch('https://allo-inventory-48cu.onrender.com/api/seed', {method: 'POST'}).then(r => r.json()).then(d => console.log(d))
+
+Steps:
+1. Open your browser (https://allo-inventory-roan.vercel.app)
+2. Press F12 to open Developer Tools
+3. Click "Console" tab
+4. Paste the above command
+5. Press Enter
+
+
+METHOD 5: AXIOS (JavaScript/Node.js)
+====================================
+axios.post('https://allo-inventory-48cu.onrender.com/api/seed')
+  .then(res => console.log(res.data))
+  .catch(err => console.log(err))
+
+
+---
+
+WHAT WILL BE SEEDED:
+====================
+✓ 3 Warehouses:
+  - North Hub (New York, NY)
+  - South Hub (Dallas, TX)
+  - West Hub (Los Angeles, CA)
+
+✓ 6 Products:
+  - Wireless Noise-Cancelling Headphones ($299.99)
+  - Mechanical Keyboard TKL ($149.99)
+  - 4K USB-C Monitor 27" ($549.99)
+  - Ergonomic Mesh Chair ($399.00)
+  - Smart Standing Desk ($799.00)
+  - Portable SSD 1TB ($89.99)
+
+✓ 18 Stock Entries (one for each product-warehouse combination)
+
+---
+
+EXPECTED RESPONSE:
+==================
+{
+  "message": "Database seeded successfully",
+  "warehouses": 3,
+  "products": 6,
+  "stock_entries": 18
+}
+
+---
+
+NOTES:
+======
+- Run ONLY ONCE (it checks if data exists and skips if already seeded)
+- No authentication required
+- Safe to call multiple times (won't duplicate data)
+- After seeding, refresh your frontend to see all products and warehouses
