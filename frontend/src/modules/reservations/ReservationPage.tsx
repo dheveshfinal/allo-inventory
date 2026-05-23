@@ -44,7 +44,7 @@ export function ReservationPage() {
   }, [reservation]);
 
   // Handle WebSocket updates for release
-  useWebSocket("products_room", (msg) => {
+  useWebSocket("products_room", () => {
     // If we receive a message that stock updated and our timer was running out, 
     // it's possible our reservation auto-released. We can re-fetch or optimistically update.
   });
