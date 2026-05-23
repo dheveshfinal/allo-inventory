@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const WS_URL = process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000";
+const WS_URL = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
 
 type WebSocketMessage = 
   | { type: "stock_update"; product_id: number; warehouse_id: number; available: number; stock_id?: number }

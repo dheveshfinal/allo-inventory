@@ -1,12 +1,11 @@
-"use client";
-
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate, useParams } from "react-router-dom";
 import { useReservation } from "./useReservation";
 import { reservationService } from "./reservationService";
 import { useWebSocket } from "../../lib/useWebSocket";
 
-export function ReservationPage({ id }: { id: string }) {
+export function ReservationPage() {
+  const { id } = useParams<{ id: string }>();
   const reservationId = Number(id);
   console.log("Route ID:", id);
   console.log("Parsed Reservation ID:", reservationId);
@@ -15,7 +14,7 @@ export function ReservationPage({ id }: { id: string }) {
     return <div>Invalid reservation ID</div>;
   }
   const { reservation, setReservation, loading, error } = useReservation(reservationId);
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const [timeLeft, setTimeLeft] = useState<number>(0);
   const [actionLoading, setActionLoading] = useState(false);
@@ -167,7 +166,7 @@ export function ReservationPage({ id }: { id: string }) {
             )}
             {reservation.status === 'confirmed' && (
               <button
-                onClick={() => router.push('/')}
+                onClick={() => navigate('/')}
                 className="w-full px-4 py-3 rounded font-medium bg-black text-white hover:bg-gray-800"
               >
                 Continue Shopping
@@ -175,7 +174,7 @@ export function ReservationPage({ id }: { id: string }) {
             )}
             {isExpired && (
               <button
-                onClick={() => router.push('/')}
+                onClick={() => navigate('/')}
                 className="w-full px-4 py-3 rounded font-medium border border-gray-300 hover:bg-gray-50"
               >
                 Return to Products

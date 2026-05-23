@@ -1,13 +1,11 @@
-"use client";
-
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { useProducts } from "./useProducts";
 import { reservationService } from "../reservations/reservationService";
 
 export function ProductsPage() {
   const { products, loading, error } = useProducts();
-  const router = useRouter();
+  const navigate = useNavigate();
   const [reservingId, setReservingId] = useState<string | null>(null);
   const [reserveError, setReserveError] = useState<string | null>(null);
 
@@ -29,7 +27,7 @@ export function ProductsPage() {
         quantity: 1
       }, idempotencyKey);
       
-      router.push(`/checkout/${reservation.id}`);
+      navigate(`/checkout/${reservation.id}`);
     } catch (err: any) {
       if (err.status === 409) {
         setReserveError("Sorry, this item just went out of stock in this warehouse.");
