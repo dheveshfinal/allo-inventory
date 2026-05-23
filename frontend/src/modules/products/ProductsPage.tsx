@@ -50,7 +50,7 @@ export function ProductsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
-          <div key={product.id} className="border rounded-lg p-6 shadow-sm flex flex-col bg-card">
+          <div key={product.id} className="border border-gray-200 rounded-lg p-6 shadow-sm flex flex-col bg-gray-50">
             <h2 className="text-xl font-bold mb-2">{product.name}</h2>
             <p className="text-gray-600 mb-4 flex-1">{product.description}</p>
             <div className="text-2xl font-bold mb-4">${product.price.toFixed(2)}</div>

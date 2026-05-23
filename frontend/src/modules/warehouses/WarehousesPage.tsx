@@ -14,7 +14,7 @@ export function WarehousesPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {warehouses.map((warehouse) => (
-          <div key={warehouse.id} className="border rounded-lg p-6 shadow-sm bg-card">
+          <div key={warehouse.id} className="border border-gray-200 rounded-lg p-6 shadow-sm bg-gray-50">
             <h2 className="text-xl font-bold mb-2">{warehouse.name}</h2>
             <p className="text-gray-600">{warehouse.location}</p>
           </div>

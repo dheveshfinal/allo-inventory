@@ -7,14 +7,14 @@ import { ReservationPage } from './modules/reservations/ReservationPage'
 
 function App() {
   return (
-    <div className="min-h-screen bg-neutral-900 text-neutral-100 p-8">
-      <header className="mb-8 border-b border-neutral-800 pb-4">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
+    <div className="min-h-screen bg-white text-neutral-900 p-8">
+      <header className="mb-8 border-b border-neutral-200 pb-4">
+        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
           Allo Inventory Dashboard
         </h1>
         <nav className="mt-4 flex gap-4 text-sm font-medium">
-          <a href="/" className="hover:text-blue-400 transition-colors">Products</a>
-          <a href="/warehouses" className="hover:text-blue-400 transition-colors">Warehouses</a>
+          <a href="/" className="hover:text-blue-600 transition-colors">Products</a>
+          <a href="/warehouses" className="hover:text-blue-600 transition-colors">Warehouses</a>
         </nav>
       </header>
       

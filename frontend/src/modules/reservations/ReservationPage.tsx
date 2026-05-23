@@ -103,9 +103,9 @@ export function ReservationPage() {
 
   return (
     <div className="container mx-auto py-12 px-4 max-w-2xl">
-      <div className="border rounded-xl shadow-lg bg-card overflow-hidden">
+      <div className="border border-gray-200 rounded-xl shadow-lg bg-gray-50 overflow-hidden">
         <div className={`p-6 text-white ${reservation.status === 'confirmed' ? 'bg-green-600' :
-          isExpired ? 'bg-red-600' : 'bg-black'
+          isExpired ? 'bg-red-600' : 'bg-blue-600'
           }`}>
           <h1 className="text-2xl font-bold flex justify-between items-center">
             <span>Checkout</span>

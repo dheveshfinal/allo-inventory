@@ -1,4 +1,3 @@
-import ssl
 import redis.asyncio as aioredis
 from app.core.config import settings
 
@@ -16,17 +15,18 @@ async def init_redis():
         raise RuntimeError("REDIS_URL is not set in environment variables")
     
     # Use SSL for Upstash (rediss://) — skip cert verification
-    ssl_context = None
+    ssl_kwargs = {}
     if redis_url.startswith("rediss://"):
-        ssl_context = ssl.create_default_context()
-        ssl_context.check_hostname = False
-        ssl_context.verify_mode = ssl.CERT_NONE
+        ssl_kwargs = {
+            "ssl_check_hostname": False,
+            "ssl_cert_reqs": "none"
+        }
     
     redis_client = aioredis.from_url(
         redis_url,
         encoding="utf-8",
         decode_responses=True,
-        ssl=ssl_context
+        **ssl_kwargs
     )
 
 async def close_redis():
