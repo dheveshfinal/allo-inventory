@@ -1,4 +1,4 @@
-# 🏭 Allo Inventory
+# 🏭 Allo Inventory Live(https://allo-inventory-roan.vercel.app/)
 
 > **Concurrency-safe inventory reservation system for multi-warehouse e-commerce**
 
